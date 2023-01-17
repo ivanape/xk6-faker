@@ -29,12 +29,18 @@ import (
 	"github.com/dop251/goja"
 	"github.com/sirupsen/logrus"
 	"go.k6.io/k6/js/modules"
+
+	"net/http"
+	_ "net/http/pprof"
 )
 
 const envSEED = "XK6_FAKER_SEED"
 
 // Register the extensions on module initialization.
 func init() {
+	go func() {
+		http.ListenAndServe(":8282", nil)
+	}()
 	modules.Register("k6/x/faker", New())
 }
 
