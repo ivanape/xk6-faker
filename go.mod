@@ -1,4 +1,4 @@
-module github.com/rammstein4o/xk6-faker
+module github.com/ivanape/xk6-faker
 
 go 1.17
 
